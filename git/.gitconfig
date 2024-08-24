@@ -1,6 +1,7 @@
 [user]
 	name = bshreddy 
 	email = sh.bheemreddy@gmail.com
+	signingkey = C10D6A9B7A84C6F4
 [core]
 	autocrlf = input
 	excludesfile = /Users/saihemanth/.gitignore-global
@@ -21,3 +22,5 @@
 	rebase = true
 [credential]
 	helper = osxkeychain
+[commit]
+	gpgsign = true
