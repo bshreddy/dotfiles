@@ -1,0 +1,415 @@
+{
+    "security.workspace.trust.enabled": false,
+    //
+    // MARK:- Editor Settings
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.minimap.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.inlineSuggest.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    //
+    // MARK:- Files Settings
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    //
+    // MARK:- Terminal Settings
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
+    //
+    // MARK:- Theme Settings
+    "materialTheme.accent": "Teal",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+    //
+    // MARK:- Extra Settings
+    "explorer.confirmDragAndDrop": false,
+    "update.mode": "manual",
+    "diffEditor.ignoreTrimWhitespace": false,
+    //
+    // MARK:- Workbench Settings
+    "workbench.statusBar.visible": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook",
+        "*.pdf": "default"
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#80CBC4",
+        "activityBar.activeBorder": "#80CBC4",
+        "list.activeSelectionForeground": "#80CBC4",
+        "list.inactiveSelectionForeground": "#80CBC4",
+        "list.highlightForeground": "#80CBC4",
+        "scrollbarSlider.activeBackground": "#80CBC450",
+        "editorSuggestWidget.highlightForeground": "#80CBC4",
+        "textLink.foreground": "#80CBC4",
+        "progressBar.background": "#80CBC4",
+        "pickerGroup.foreground": "#80CBC4",
+        "tab.activeBorder": "#80CBC4",
+        "notificationLink.foreground": "#80CBC4",
+        "editorWidget.resizeBorder": "#80CBC4",
+        "editorWidget.border": "#80CBC4",
+        "settings.modifiedItemIndicator": "#80CBC4",
+        "settings.headerForeground": "#80CBC4",
+        "panelTitle.activeBorder": "#80CBC4",
+        "breadcrumb.activeSelectionForeground": "#80CBC4",
+        "menu.selectionForeground": "#80CBC4",
+        "menubar.selectionForeground": "#80CBC4",
+        "editor.findMatchBorder": "#80CBC4",
+        "selection.background": "#80CBC440",
+        "statusBarItem.remoteBackground": "#80CBC4"
+    },
+    "workbench.list.smoothScrolling": true,
+    //
+    // MARK:- git Settings
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    //
+    // MARK:- EMMET Settings
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    },
+    //
+    // MARK:- Language Specific - C
+    "[c]": {
+        "editor.rulers": [
+            100
+        ]
+    },
+    //
+    // MARK:- Language Specific - C++
+    "[cpp]": {
+        "editor.rulers": [
+            100
+        ],
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true
+    },
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 100}",
+    //
+    // MARK:- Language Specific - Python
+    "python.pythonPath": "/usr/local/opt/python@3.9/bin/python3.9",
+    "python.analysis.disabled": [
+        "unresolved-import"
+    ],
+    "python.languageServer": "Pylance",
+    "[python]": {
+        "editor.rulers": [
+            99
+        ]
+    },
+    //
+    // MARK:- Language Specific - Swift
+    "sourcekit-lsp.serverPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+    "sde.languageServerMode": "sourcekit-lsp",
+    "sde.buildOnSave": false,
+    //
+    // MARK:- Language Specific - Java
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.semanticHighlighting.enabled": true,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    //
+    // MARK:- Language Specific - Javascript
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "eslint.format.enable": true,
+    "[javascript]": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+    },
+    //
+    // MARK:- Language Specific - Typescript
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[typescript]": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    },
+    //
+    // MARK:- Language Specific - Typescript for React
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    },
+    //
+    // MARK:- Language Specific - LaTeX
+    "[latex]": {
+        // "editor.wordWrap": "on",
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "editor.tabSize": 2,
+    },
+    //
+    // MARK:- Language Specific - Markdown
+    "markdown.preview.fontFamily": " -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif",
+    "markdown-pdf.highlightStyle": "github.css",
+    // "markdown-pdf.headerTemplate": "<div style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 9px; margin-left: 1cm;\">Sai Hemanth Bheemreddy</span>",
+    "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div>",
+    // "markdown-pdf.headerTemplate": "<div></div>",
+    // "markdown-pdf.footerTemplate": "<div></div>",
+    // "markdown-pdf.footerTemplate": "<div style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 8px; margin-left: auto; margin-right: 1cm;\"> <span class='pageNumber'></span> of <span class='totalPages'></span></div>",
+    // "markdown-pdf.orientation": "landscape",
+    // "markdown-pdf.height": "3508px",
+    // "markdown-pdf.width": "2480px",
+    //
+    "[markdown]": {
+        "editor.tabSize": 2,
+    },
+    // MARK:- Language Specific - Dart
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    //
+    // MARK:- Language Specific - Shell Script
+    "[shellscript]": {
+        "files.eol": "\n"
+    },
+    //
+    // MARK:- Language Specific - Plain Text
+    "[plaintext]": {
+        // "editor.wordWrap": "on"
+    },
+    //
+    // MARK:- Extension: TabNine.tabnine-vscode
+    "tabnine.experimentalAutoImports": true,
+    //
+    // MARK:- Extension: Oracle.oracledevtools
+    "oracledevtools.bookmarkFileFolder": "/Users/saihemanth/Oracle/oracle.oracledevtools",
+    "oracledevtools.connectionConfiguration.configFilesFolder": "/Users/saihemanth/Oracle/network/admin",
+    "oracledevtools.connectionConfiguration.walletFileFolder": "/Users/saihemanth/Oracle/network/admin",
+    //
+    // MARK:- Extension: James-Yu.latex-workshop
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.outDir": "%DIR%/pdf",
+    "latex-workshop.message.information.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.chktex.run": "onSave",
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "latexmk (latexmkrc)",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "Compile Rnw files",
+            "tools": [
+                "rnw2tex",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "Compile Jnw files",
+            "tools": [
+                "jnw2tex",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "tectonic",
+            "tools": [
+                "tectonic"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "tectonic",
+            "command": "tectonic",
+            "args": [
+                "--synctex",
+                "--keep-logs",
+                "%DOC%.tex"
+            ],
+            "env": {}
+        }
+    ],
+    //
+    // MARK:- Extra Extension Settings
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "githubPullRequests.fileListLayout": "flat",
+    "redhat.telemetry.enabled": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "explorer.confirmDelete": false,
+    "remote.extensionKind": {
+        "icrawl.discord-vscode": "ui"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "python.defaultInterpreterPath": "/usr/local/opt/python@3.9/bin/python3.9",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true,
+        "kotlin": false
+    },
+    "json.schemas": [
+        {
+            "name": "vscode-expo-manifest",
+            "url": "file:///Users/b.sai.hemanth.reddy/Library/Application%20Support/Code/User/globalStorage/bycedric.vscode-expo/manifest-42.0.0.json",
+            "fileMatch": [
+                "app.json",
+                "app.config.json"
+            ]
+        }
+    ],
+    "jupyter.askForKernelRestart": false,
+    "yaml.customTags": [
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Join",
+        "!Join sequence",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence"
+    ],
+    "aws.telemetry": false,
+    "editor.suggest.showMethods": true,
+    "editor.suggest.preview": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.snippetSuggestions": "top"
+}
