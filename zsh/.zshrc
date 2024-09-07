@@ -4,6 +4,3 @@ function parse_git_branch() {
 }
 setopt PROMPT_SUBST
 export PROMPT='%n@%m %1~%F{green}$(parse_git_branch)%f %# '
-
-autoload -Uz compinit && compinit
-export GPG_TTY=$(tty)

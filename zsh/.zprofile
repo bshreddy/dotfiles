@@ -20,6 +20,9 @@ alias vi="nvim"
 
 alias date_ff="date +%Y-%m-%dT%H:%M:%S%z"
 
+# Gatech Alias
+alias start_cs6210="aws ec2 start-instances --instance-ids 'i-0ec59de513afaa376'"
+
 # Language Specific - Java
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home
 

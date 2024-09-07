@@ -37,7 +37,7 @@
     "workbench.statusBar.visible": true,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook",
-        "*.pdf": "default"
+        "*.pdf": "latex-workshop-pdf-hook"
     },
     "workbench.startupEditor": "newUntitledFile",
     "workbench.colorCustomizations": {
@@ -411,5 +411,6 @@
     "editor.suggest.showMethods": true,
     "editor.suggest.preview": true,
     "editor.acceptSuggestionOnEnter": "on",
-    "editor.snippetSuggestions": "top"
+    "editor.snippetSuggestions": "top",
+    "git.openRepositoryInParentFolders": "always"
 }
