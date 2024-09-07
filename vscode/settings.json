@@ -1,6 +1,11 @@
 {
     "security.workspace.trust.enabled": false,
     //
+    // MARK:- Window Settings
+    "window.titleBarStyle": "native",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    //
     // MARK:- Editor Settings
     "editor.fontSize": 16,
     "editor.fontFamily": "'SF Mono', Menlo, Monaco, 'Courier New', monospace",
