@@ -1,26 +1,29 @@
 [user]
-	name = Sai Hemanth Bheemreddy
-	email = sh.bheemreddy@gmail.com
-	signingkey = C10D6A9B7A84C6F4
+    name = Sai Hemanth Bheemreddy
+    email = sh.bheemreddy@gmail.com
+    signingkey = C10D6A9B7A84C6F4
 [core]
-	autocrlf = input
-	excludesfile = /Users/saihemanth/.gitignore-global
+    autocrlf = input
+    excludesfile = /Users/bshreddy/.gitignore-global
+    editor = nvim
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [code]
-	editor = nvim
+    editor = nvim
 [init]
-	defaultBranch = mainline
+    defaultBranch = mainline
 [pull]
-	rebase = true
+    rebase = true
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [commit]
-	gpgsign = true
+    gpgsign = true
+[tag]
+    gpgSign = true

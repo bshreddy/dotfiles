@@ -1,0 +1,137 @@
+log() {
+    echo "[yabairc] $1"
+}
+
+create_and_label_space() {
+    local display_id=$1
+    local label=$2
+    yabai -m space --create $display_id
+    sleep 0.2
+    last_space_id=$(yabai -m query --spaces --display $display_id | jq '.[-1].index')
+    yabai -m space $last_space_id --label $label
+}
+
+run_yabai_init() {
+    log "Starting Yabai space setup..."
+
+    local PERSIST_FILE="$HOME/.yabai-spaces"
+    spaces=$(yabai -m query --spaces)
+
+    if [[ -f "$PERSIST_FILE" ]]; then
+        while read -r line; do
+            [[ -z "$line" ]] && continue
+            uuid="${line%%,*}"
+            label="${line##*,}"
+
+            # Find index by uuid
+            index=$(echo $spaces | jq -r --arg uuid "$uuid" '.[] | select(.uuid == $uuid) | .index')
+
+            if [[ -n "$index" && "$label" =~ ^[ds] ]]; then
+                log "Relabeling space $index ($uuid) to '$label'"
+                yabai -m space $index --label $label
+            fi
+        done < "$PERSIST_FILE"
+    fi
+
+    displays=$(yabai -m query --displays)
+
+    # Pass 1: Handle unmanaged spaces
+    echo $displays | jq -c '.[]' | while read -r display; do
+        display_idx=$(echo $display | jq -r '.index')
+        spaces=$(yabai -m query --spaces --display $display_idx)
+        unmanaged_label="d${display_idx}"
+
+        has_unmanaged_space=$(echo "$spaces" | jq -r --arg l "$unmanaged_label" 'map(.label) | index($l)')
+        if [ "$has_unmanaged_space" = "null" ]; then
+            log "Creating unmanaged space $unmanaged_label on display $display_idx"
+            create_and_label_space "$display_idx" "$unmanaged_label"
+        fi
+
+        yabai -m config --space $unmanaged_label layout float
+        yabai -m query --spaces --display $display_idx | jq .
+
+        unmanaged_idx=$(yabai -m query --spaces --space $unmanaged_label | jq .index)
+
+        echo "$spaces" | jq -c '.[]' | while read -r space; do
+            label=$(echo "$space" | jq -r '.label')
+            space_idx=$(echo "$space" | jq -r '.index')
+
+            if [[ ! $label =~ ^s[0-9]+$ && $label != "$unmanaged_label" ]]; then
+                log "Moving windows from unlabeled space $space_idx to $unmanaged_idx"
+                windows=$(yabai -m query --windows --space "$space_id" | jq -r '.[].index')
+                for win_idx in $windows; do
+                    yabai -m window "$win_idx" --space "$unmanaged_idx"
+                done
+                sleep 0.2
+                yabai -m space "$space_idx" --destroy || true
+            fi
+        done
+    done
+
+    # Pass 2: Ensure s1-s9 exist
+    all_spaces=$(yabai -m query --spaces)
+    for idx in $(seq 1 9); do
+        label="s${idx}"
+        found=$(echo "$all_spaces" | jq -r --arg l "$label" 'map(.label) | index($l)')
+        if [ $found = "null" ]; then
+            first_display_idx=$(echo $displays | jq -r '.[0].index')
+            log "Creating managed space $label on display $first_display_idx"
+            create_and_label_space "$first_display_idx" "$label"
+        fi
+    done
+
+    log "Saving current space UUID-label mappings as CSV..."
+
+    yabai -m query --spaces | jq -r '
+        .[] | select(.label | test("^[ds]")) |
+        "\(.uuid),\(.label)"
+    ' > "$HOME/.yabai-spaces"
+
+    log "Completed Setup"
+}
+
+# Inject Code into Dock
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Spaces Setup
+# run_yabai_init
+# yabai -m signal --add event=dock_did_restart action="run_yabai_init"
+# yabai -m signal --add event=display_added action="run_yabai_init"
+# yabai -m signal --add event=display_removed action="run_yabai_init"
+# yabai -m signal --add event=system_woke action="run_yabai_init"
+
+# Layout
+yabai -m config layout bsp
+yabai -m config window_placement second_child
+yabai -m config window_insertion_point focused
+yabai -m config auto_balance
+
+# Mouse Support
+yabai -m config mouse_modifier option
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus off
+
+# Disable management for some Applications
+yabai -m rule --add app='^System Settings$' manage=off
+yabai -m rule --add app='^Finder$' manage=off
+yabai -m rule --add app='^Messages$' manage=off
+yabai -m rule --add app='^WhatsApp$' manage=off
+yabai -m rule --add app='^Calender$' manage=off
+yabai -m rule --add app='^Calculator$' manage=off
+yabai -m rule --add app='^Simulator$' manage=off
+yabai -m rule --add app='^Alfred 5$' manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add app="System Information" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add app="^iPhone Mirroring$" manage=off
+yabai -m rule --add app="^Cisco Secure Client$" manage=off
+
+# Assign some apps to specific spaces
+yabai -m rule --add app="^Microsoft Outlook$" space=^s8
+yabai -m rule --add app="^Slack$" space=^s9

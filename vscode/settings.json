@@ -2,9 +2,10 @@
     "security.workspace.trust.enabled": false,
     //
     // MARK:- Window Settings
-    "window.titleBarStyle": "native",
+    // "window.titleBarStyle": "native",
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
+
     //
     // MARK:- Editor Settings
     "editor.fontSize": 16,
@@ -17,6 +18,10 @@
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.smoothScrolling": true,
+    "editor.suggest.showMethods": true,
+    "editor.suggest.preview": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.snippetSuggestions": "top",
     //
     // MARK:- Files Settings
     "files.autoSave": "afterDelay",
@@ -75,6 +80,7 @@
     // MARK:- git Settings
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
+    "git.openRepositoryInParentFolders": "always",
     //
     // MARK:- EMMET Settings
     "emmet.syntaxProfiles": {
@@ -260,13 +266,13 @@
             "name": "latexmk",
             "command": "latexmk",
             "args": [
-                "--shell-escape",
+                "-shell-escape",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-pdf",
                 "-outdir=%OUTDIR%",
-                "%DOC%"
+                "%DOCFILE%"
             ],
             "env": {}
         },
@@ -274,13 +280,13 @@
             "name": "lualatexmk",
             "command": "latexmk",
             "args": [
-                "--shell-escape",
+                "-shell-escape",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-lualatex",
                 "-outdir=%OUTDIR%",
-                "%DOC%"
+                "%DOCFILE%"
             ],
             "env": {}
         },
@@ -413,9 +419,18 @@
         "!Split sequence"
     ],
     "aws.telemetry": false,
-    "editor.suggest.showMethods": true,
-    "editor.suggest.preview": true,
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.snippetSuggestions": "top",
-    "git.openRepositoryInParentFolders": "always"
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path": "/Users/bshreddy/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/19.1.2/clangd_19.1.2/bin/clangd",
+    "java.completion.favoriteStaticMembers": [
+        "org.testng.Assert.*",
+        "org.junit.Assert.*",
+        "org.junit.Assume.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "org.junit.jupiter.api.Assumptions.*",
+        "org.junit.jupiter.api.DynamicContainer.*",
+        "org.junit.jupiter.api.DynamicTest.*",
+        "org.mockito.Mockito.*",
+        "org.mockito.ArgumentMatchers.*",
+        "org.mockito.Answers.*"
+    ]
 }
