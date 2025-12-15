@@ -37,18 +37,19 @@ run_yabai_init() {
 
     # Pass 1: Handle unmanaged spaces
     echo $displays | jq -c '.[]' | while read -r display; do
+
         display_idx=$(echo $display | jq -r '.index')
         spaces=$(yabai -m query --spaces --display $display_idx)
         unmanaged_label="d${display_idx}"
 
         has_unmanaged_space=$(echo "$spaces" | jq -r --arg l "$unmanaged_label" 'map(.label) | index($l)')
+        echo "$display_idx has_unmanaged_space? $has_unmanaged_space"
         if [ "$has_unmanaged_space" = "null" ]; then
             log "Creating unmanaged space $unmanaged_label on display $display_idx"
             create_and_label_space "$display_idx" "$unmanaged_label"
         fi
 
         yabai -m config --space $unmanaged_label layout float
-        yabai -m query --spaces --display $display_idx | jq .
 
         unmanaged_idx=$(yabai -m query --spaces --space $unmanaged_label | jq .index)
 
@@ -77,6 +78,7 @@ run_yabai_init() {
             first_display_idx=$(echo $displays | jq -r '.[0].index')
             log "Creating managed space $label on display $first_display_idx"
             create_and_label_space "$first_display_idx" "$label"
+            yabai -m config --space $label layout bsp
         fi
     done
 
@@ -95,11 +97,11 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # Spaces Setup
-# run_yabai_init
-# yabai -m signal --add event=dock_did_restart action="run_yabai_init"
-# yabai -m signal --add event=display_added action="run_yabai_init"
-# yabai -m signal --add event=display_removed action="run_yabai_init"
-# yabai -m signal --add event=system_woke action="run_yabai_init"
+run_yabai_init
+yabai -m signal --add event=dock_did_restart action="run_yabai_init"
+yabai -m signal --add event=display_added action="run_yabai_init"
+yabai -m signal --add event=display_removed action="run_yabai_init"
+yabai -m signal --add event=system_woke action="run_yabai_init"
 
 # Layout
 yabai -m config layout bsp
@@ -123,6 +125,7 @@ yabai -m rule --add app='^Calender$' manage=off
 yabai -m rule --add app='^Calculator$' manage=off
 yabai -m rule --add app='^Simulator$' manage=off
 yabai -m rule --add app='^Alfred 5$' manage=off
+yabai -m rule --add app='^Photos$' manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
 yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
@@ -131,6 +134,7 @@ yabai -m rule --add app="System Information" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add app="^iPhone Mirroring$" manage=off
 yabai -m rule --add app="^Cisco Secure Client$" manage=off
+yabai -m rule --add app="^Phone$" manage=off
 
 # Assign some apps to specific spaces
 yabai -m rule --add app="^Microsoft Outlook$" space=^s8
