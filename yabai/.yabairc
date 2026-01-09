@@ -135,6 +135,8 @@ yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add app="^iPhone Mirroring$" manage=off
 yabai -m rule --add app="^Cisco Secure Client$" manage=off
 yabai -m rule --add app="^Phone$" manage=off
+yabai -m rule --add app="^Weather$" manage=off
+yabai -m rule --add app="^Contacts$" manage=off
 
 # Assign some apps to specific spaces
 yabai -m rule --add app="^Microsoft Outlook$" space=^s8

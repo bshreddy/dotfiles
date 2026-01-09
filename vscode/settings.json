@@ -224,8 +224,14 @@
     "latex-workshop.message.error.show": false,
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.chktex.run": "onSave",
-    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.recipe.default": "lastUsed",
     "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
         {
             "name": "latexmk (lualatex)",
             "tools": [
@@ -245,7 +251,7 @@
             ]
         },
         {
-            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "name": "pdflatex ➞ bibtex ➞ pdflatex * 2",
             "tools": [
                 "pdflatex",
                 "bibtex",
